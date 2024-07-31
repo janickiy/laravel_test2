@@ -13,8 +13,8 @@ class LikeTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Likes::truncate();
-        Likes::unguard();
+       // Likes::truncate();
+      //  Likes::unguard();
         Comments::all()->each(function ($comment) {
             for ($i = 0; $i < 200; $i++)  {
                 Likes::create([

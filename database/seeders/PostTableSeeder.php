@@ -13,8 +13,8 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
-        Posts::truncate();
-        Posts::unguard();
+        //Posts::truncate();
+       // Posts::unguard();
         $faker = \Faker\Factory::create();
         User::all()->each(function ($user) use ($faker) {
             for ($i = 0; $i < 1000; $i++)  {

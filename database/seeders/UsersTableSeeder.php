@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::truncate();
+       // User::truncate();
 
         User::create([
             'name' => 'admin',
@@ -26,7 +26,7 @@ class UsersTableSeeder extends Seeder
             $password = bcrypt('secret');
             User::create([
                 'name'     => $faker->name,
-                'email'    => $faker->email,
+                'login'    => str()->random(),
                 'password' => $password,
             ]);
         }

@@ -13,8 +13,8 @@ class CommentTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Posts::truncate();
-        Posts::unguard();
+       // Posts::truncate();
+       // Posts::unguard();
         $faker = \Faker\Factory::create();
         Posts::all()->each(function ($post) use ($faker) {
             for ($i = 0; $i < 500; $i++)  {
