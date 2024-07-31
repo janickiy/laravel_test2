@@ -5,6 +5,7 @@
 3. `php artisan migrate`
 4. `php artisan db:seed`
 5. `php artisan key:generate`
+6. `php artisan jwt:secret`
 
 
 

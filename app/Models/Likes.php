@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Likes extends Model
 {
@@ -21,6 +22,14 @@ class Likes extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @return MorphTo
+     */
+    public function likeable(): MorphTo
+    {
+        return $this->morphTo();
     }
 
 }

@@ -1,7 +1,12 @@
 <?php
 
-use Illuminate\Http\Request;
+
+use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\CommentController;
+use App\Http\Controllers\Api\LikeController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,18 +19,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('auth')->middleware('api')->group(function ($router) {
+    Route::post('login', [AuthController::class, 'login'])->name('login');
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('refresh', [AuthController::class, 'refresh'])->name('refresh');
+    Route::post('me', [AuthController::class, 'me'])->name('me');
 });
 
 Route::group(['prefix' => 'post'], function () {
-
+    Route::get('list', [PostController::class, 'list'])->name('post.list');
+    Route::get('{id}', [PostController::class, 'getPost'])->name('post.get')->where('id', '[0-9]+');
+    Route::post('store', [PostController::class, 'store'])->name('post.store');
+    Route::put('update', [PostController::class, 'update'])->name('post.update');
+    Route::post('delete', [PostController::class, 'delete'])->name('post.delete');
 });
 
 Route::group(['prefix' => 'comment'], function () {
-
+    Route::post('add', [CommentController::class, 'add'])->name('comment.add');
+    Route::post('delete', [CommentController::class, 'delete'])->name('post.delete');
 });
 
 Route::group(['prefix' => 'like'], function () {
-
+    Route::post('like', [LikeController::class, 'like'])->name('like');
 });

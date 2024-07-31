@@ -13,15 +13,12 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->integer('commentable_id')->index('commentable_id');
-            $table->string('commentable_type');
+            $table->morphs('commentable');
             $table->text('comment');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
-
-
     }
 
     /**
