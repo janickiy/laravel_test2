@@ -16,8 +16,7 @@ class LikeTableSeeder extends Seeder
     {
         Likes::truncate();
         Likes::unguard();
-        $faker = \Faker\Factory::create();
-        Comments::all()->each(function ($comment) use ($faker) {
+        Comments::all()->each(function ($comment) {
             for ($i = 0; $i < 200; $i++)  {
                 Likes::create([
                     'user_id' => $comment->user_id,
