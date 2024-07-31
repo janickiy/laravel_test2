@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Comments;
 use App\Models\Likes;
-use App\Models\Posts;
 use Illuminate\Database\Seeder;
 
 class LikeTableSeeder extends Seeder
